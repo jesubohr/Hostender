@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { AuthContext } from '../utils/AuthContext';
 import { useSession, useLocal, useFetch } from '../utils/hooks';
 import { AUTH_URL } from '../utils/authUser';
@@ -7,18 +8,26 @@ export default function AuthProvider ({ children }) {
     const [sessionToken, setSessionToken] = useSession('userToken');
     const [userData, setUserData] = useLocal('userData', {});
     const [token, setToken] = useState(sessionToken);
+
     const POST = useFetch('POST');
+    const { search } = useLocation();
+    const navigate = useNavigate();
 
     async function handleLogin (user, setError, setLoading) {
         try {
-            const data = await POST(`${AUTH_URL}/login`, user);
+            let data;
+            if(search.includes('admin')) {
+                data = await POST(`${AUTH_URL}/admin`, user);
+            } else {
+                data = await POST(`${AUTH_URL}/login`, user);
+            }
             //setUserData(data.user);
             setToken(data._id);
             setSessionToken(data._id);
             setLoading(false);
 
-            const redirect = window.location.href.split('?')[1];
-            window.location.href = redirect ? redirect.split('=')[1] : '/';
+            const redirect = search.split('=').pop();
+            navigate(`/${redirect}`);
         } catch (error) {
             setError('Invalid username or password');
             setLoading(false);
