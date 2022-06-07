@@ -5,8 +5,10 @@ export default function Button ({ children, type = "button", onClick = () => { }
             type={ ButtonType(type) }
             title={ children }
             className={
-                "border-2 " +
-                "outline-2 outline-offset-4 outline-sky-300 " +
+                "flex justify-center items-center " +
+                "py-2 px-4 max-w-xs " +
+                "bg-main border-2 border-black " +
+                "text-xl font-medium outline-2 outline-offset-4 outline-sky-300 cursor-pointer " +
                 className
             }
             onClick={ onClick }

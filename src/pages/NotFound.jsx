@@ -1,7 +1,10 @@
+import Section from "@block/Section"
+import Title from "@block/Title"
+
 export default function NotFound () {
     return (
-        <section>
-            <h1>404</h1>
-        </section>
+        <Section>
+            <Title>404</Title>
+        </Section>
     )
 }

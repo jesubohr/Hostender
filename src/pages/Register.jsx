@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useAuth } from '../utils/authUser';
+import { useAuth } from '@util/authUser';
 
-import { Form } from '../components/form';
-import { LabeledInput } from '../components/input';
-import { Button } from '../components/button';
-import { Loader } from '../components/loader';
+import { Form } from '@block/form';
+import { LabeledInput } from '@block/input';
+import { Button } from '@block/button';
+import { Loader } from '@block/loader';
+import Section from '@block/Section';
+import Title from '@block/Title';
 
 export default function Register () {
     const [error, setError] = useState('');
@@ -17,37 +19,35 @@ export default function Register () {
     };
 
     return (
-        <section>
+        <Section>
             { loading && <Loader /> }
-            <h2>Registrate</h2>
+            <Title>Register</Title>
             <Form onSubmit={ handleSubmit }>
                 <LabeledInput
-                    type="text"
                     name="fullName"
-                    placeholder="Fullname"
+                    placeholder="John Doe"
                     label="Enter your fullname"
                     minLength={ 7 }
                 />
                 <LabeledInput
-                    type="text"
                     name="username"
-                    placeholder="Username"
+                    placeholder="johndoe"
                     label="Enter your username"
                     minLength={ 5 }
                 />
                 <LabeledInput
                     type="password"
                     name="password"
-                    placeholder="Password"
+                    placeholder="********"
                     label="Enter your password"
                     minLength={ 8 }
                 />
                 <Button type="submit">Sign Up</Button>
             </Form>
-            <p>
-                Already have an account? <Link to='/login'>Log In</Link>
+            <p className="mt-3 text-lg">
+                Already have an account? <Link to='/login' className="text-dark font-semibold">Log In</Link>
             </p>
             { error && <p className="error">{ error }</p> }
-        </section>
+        </Section>
     );
 }

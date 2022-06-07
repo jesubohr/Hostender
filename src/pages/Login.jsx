@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useAuth } from '../utils/authUser';
+import { useAuth } from '@util/authUser';
 
-import { Form } from '../components/form';
-import { LabeledInput } from '../components/input';
-import { Button } from '../components/button';
-import { Loader } from '../components/loader';
+import { Form } from '@block/form';
+import { LabeledInput } from '@block/input';
+import { Button } from '@block/button';
+import { Loader } from '@block/loader';
+import Section from '@block/Section';
+import Title from '@block/Title';
 
 export default function Login () {
     const [error, setError] = useState('');
@@ -18,30 +20,29 @@ export default function Login () {
     };
 
     return (
-        <section className="flex flex-col">
+        <Section className="flex flex-col">
             { loading && <Loader /> }
-            <h2>Log In</h2>
+            <Title>Log In</Title>
             <Form onSubmit={ handleSubmit }>
                 <LabeledInput
-                    type="text"
                     name="username"
-                    placeholder="Username"
+                    placeholder="johndoe"
                     label="Enter your username"
                     minLength={ 5 }
                 />
                 <LabeledInput
                     type="password"
                     name="password"
-                    placeholder="Password"
+                    placeholder="********"
                     label="Enter your password"
                     minLength={ 8 }
                 />
                 <Button type="submit">Log In</Button>
             </Form>
-            <p>
-                Don't have an account yet? <Link to="/register">Register</Link>
+            <p className="mt-3 text-lg">
+                Don't have an account yet? <Link to="/register" className="text-dark font-semibold">Register</Link>
             </p>
             { error && <p className="error">{ error }</p> }
-        </section>
+        </Section>
     );
 }

@@ -25,7 +25,7 @@ export default function Form ({ children, onSubmit }) {
     }
     return (
         <form
-            className="flex flex-col gap-3"
+            className="flex flex-col gap-5 w-full max-w-md"
             onSubmit={ handleSubmit }
         >
             { children }

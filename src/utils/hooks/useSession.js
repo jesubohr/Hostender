@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 
-export default function useSession (key, defaultValue = '') {
+export default function useSession (key, defaultValue) {
     const [value, setValue] = useState(() => {
         const sessionValue = sessionStorage.getItem(key);
         if (sessionValue) return sessionValue;
-        return defaultValue;
+        return defaultValue || null;
     });
 
     useEffect(() => {
