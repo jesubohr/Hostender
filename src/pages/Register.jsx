@@ -15,6 +15,7 @@ export default function Register () {
     const { onRegister } = useAuth();
 
     const handleSubmit = (formData) => {
+        setLoading(true);
         onRegister(formData, setError, setLoading);
     };
 

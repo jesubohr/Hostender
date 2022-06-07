@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { AuthContext } from '../utils/AuthContext';
-import { useSession, useLocal, useFetch } from '../utils/hooks';
-import { AUTH_URL } from '../utils/authUser';
+import { useSession, useLocal, useFetch } from '@util/hooks';
+import { AuthContext } from '@util/AuthContext';
+import { AUTH_URL } from '@util/authUser';
+import { useCart } from '@util/hooks';
 
 export default function AuthProvider ({ children }) {
     const [sessionAdmin, setSessionAdmin] = useSession('adminToken');
@@ -13,20 +14,24 @@ export default function AuthProvider ({ children }) {
 
     const POST = useFetch('POST');
     const { search } = useLocation();
+    const { onClean } = useCart();
     const navigate = useNavigate();
 
     async function handleLogin (user, setError, setLoading) {
         try {
             let data;
             if(search.includes('admin')) {
-                data = await POST(`${AUTH_URL}/admin`, user);
+                data = await POST(`${AUTH_URL}/login`, user);
                 setAdmin(data._id);
                 setSessionAdmin(data._id);
             } else {
                 data = await POST(`${AUTH_URL}/login`, user);
                 setToken(data._id);
                 setSessionToken(data._id);
-                //setUserData(data.user);
+                setUserData({
+                    id: data._id,
+                    ...data.user
+                });
             }
             setLoading(false);
 
@@ -41,9 +46,12 @@ export default function AuthProvider ({ children }) {
     async function handleRegister (user, setError, setLoading) {
         try {
             const data = await POST(`${AUTH_URL}/register`, user);
-            //setUserData(data.user);
             setToken(data._id);
             setSessionToken(data._id);
+            setUserData({
+                id: data._id,
+                ...data.user
+            });
             setLoading(false);
             window.location.href = '/';
         } catch (error) {
@@ -58,6 +66,7 @@ export default function AuthProvider ({ children }) {
         setAdmin(null);
         setSessionToken(null);
         setSessionAdmin(null);
+        onClean();
         navigate('/');
     }
 
