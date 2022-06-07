@@ -6,7 +6,7 @@ import { Icon } from './icon';
 export default function Header () {
     const { user, admin, token, onLogout } = useAuth();
 
-    const homePath = admin ? '/admin' : '/home';
+    const homePath = admin ? '/admin' : '/';
     return (
         <header className="relative flex justify-between items-center px-6 sm:px-16 w-full h-20 bg-main border-b-4 border-black/10">
             <Link to={ homePath } className="p-1 py-2 sm:px-4 hover:bg-light dark:hover:bg-slate-600">

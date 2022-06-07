@@ -64,6 +64,7 @@ export default function Checkout () {
                     name="zipCode"
                     placeholder="Zip Code"
                     label="Enter your zip code"
+                    max={99999}
                     minLength={ 6 }
                     maxLength={ 6 }
                 />
@@ -72,6 +73,7 @@ export default function Checkout () {
                     name="cellphone"
                     placeholder="Cellphone"
                     label="Enter your cellphone"
+                    max="none"
                     minLength={ 10 }
                     maxLength={ 10 }
                 />

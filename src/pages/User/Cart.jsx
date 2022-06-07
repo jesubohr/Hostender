@@ -63,7 +63,7 @@ export default function Cart () {
                         </svg>
                         <p className="text-2xl">Tu carrito esta vacío.</p>
                         <Link to="/">
-                            <Button>¡Ve a comprar!</Button>
+                            <Button>Go Shop!</Button>
                         </Link>
                     </div>
             }

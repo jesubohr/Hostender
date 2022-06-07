@@ -7,26 +7,11 @@ export default function createCheckout () {
 
     return function BUY (data, setError, setLoading) {
         const { owner, cart, formData } = data;
-        const exists = userHistory.find(item => item.owner === owner);
-        let newUserHistory;
-        if (exists) {
-            newUserHistory = userHistory.map(item => {
-                if (item.owner === owner) {
-                    item.history.push({
-                        info: { ...formData },
-                        products: cart
-                    });
-                }
-                return item;
-            });
-        } else {
-            newUserHistory = [...userHistory, {
-                owner,
-                info: {...formData},
-                history: [...cart]
-            }];
-        }
-        setUserHistory(newUserHistory);
+        setUserHistory([...userHistory, {
+            owner,
+            info: { ...formData },
+            history: [...cart]
+        }]);
         wait(1000).then(() => {
             setLoading(false);
             navigate(`/`);

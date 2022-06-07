@@ -1,6 +1,7 @@
 const ICONS = {
     close: <path d="M4.5 4.5l6 6m-6 0l6-6" stroke="currentColor" />,
     check: <path d="M1 7l4.5 4.5L14 3" stroke="currentColor" />,
+    caret: <path d="M7.5 13l-.332.374.332.295.332-.295L7.5 13zm0-11l.34-.367-.333-.308-.34.301L7.5 2zm.332 11.374l4.5-4-.664-.748-4.5 4 .664.748zm0-.748l-4.5-4-.664.748 4.5 4 .664-.748zm-.664-11l-4.5 4 .664.748 4.5-4-.664-.748zm-.008.74l4.313 4 .68-.733-4.313-4-.68.734z" fill="currentColor" />,
     star: <path d="M7.5 12.04l-4.326 2.275L4 9.497.5 6.086l4.837-.703L7.5 1l2.163 4.383 4.837.703L11 9.497l.826 4.818L7.5 12.041z" stroke="currentColor" />,
     menu: <path d="M0 5.5h15m-15-4h15m-15 8h15m-15 4h15" stroke="currentColor" />,
     user: <path clipRule="evenodd" d="M10.5 3.498a2.999 2.999 0 01-3 2.998 2.999 2.999 0 113-2.998zm2 10.992h-10v-1.996a3 3 0 013-3h4a3 3 0 013 3v1.997z" stroke="currentColor" />,

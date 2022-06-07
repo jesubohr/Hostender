@@ -9,7 +9,7 @@ import Register from '@page/Register';
 import Login from '@page/Login';
 
 import { AdminPanel, AddItem, ViewItem } from '@page/Admin';
-import { Home, ProductView } from '@page/User';
+import { Home, Profile, ProductView } from '@page/User';
 import { Cart, Checkout } from '@page/User';
 
 export default function Routing () {
@@ -41,6 +41,11 @@ export default function Routing () {
                         <Route index element={
                             <ProtectedRoute>
                                 <Home />
+                            </ProtectedRoute>
+                        } />
+                        <Route path="profile" element={
+                            <ProtectedRoute>
+                                <Profile />
                             </ProtectedRoute>
                         } />
 

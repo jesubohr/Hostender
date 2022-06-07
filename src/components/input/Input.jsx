@@ -1,5 +1,5 @@
 export default function Input ({
-    type, name, label, placeholder, minLength, maxLength, value = '', error = ''
+    type, name, label, placeholder, minLength, maxLength, value = '', error = '', max
 }) {
     return (
         <input
@@ -8,7 +8,7 @@ export default function Input ({
             name={ name }
             step="any"
             min={ 0 }
-            max={ 10000 }
+            max={ max }
             defaultValue={ value }
             placeholder={ placeholder }
             className={

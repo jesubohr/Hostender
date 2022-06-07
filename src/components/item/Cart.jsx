@@ -7,7 +7,7 @@ export default function CartItem ({ item, methods }) {
     return (
         <article className="flex justify-between items-center pb-8 border-b border-gray/40 text-lg">
             <img src={ item.img } alt={ item.name } className="w-28 h-28 border-4 border-gray/20 rounded-full object-cover" />
-            <div className="">
+            <div>
                 <h1 className="font-semibold leading-[0.7]">{ item.name }</h1>
                 <p className="text-gray text-md">{ item.category }</p>
             </div>
